@@ -1,0 +1,123 @@
+{
+  "preamble": {
+    "title": "aiken-lang/test-contract",
+    "description": "Aiken contracts for project 'aiken-lang/test-contract'",
+    "version": "0.0.0",
+    "plutusVersion": "v2",
+    "license": "Apache-2.0"
+  },
+  "validators": [
+    {
+      "title": "test_contract.hello_world",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/test_contract~1Datum"
+        }
+      },
+      "redeemer": {
+        "title": "redeemer",
+        "schema": {
+          "$ref": "#/definitions/test_contract~1Redeemer"
+        }
+      },
+      "compiledCode": "5901ec01000032323232323232323232322223232533300a3232533300c002100114a066646002002444a66602400429404c8c94ccc040cdc78010018a5113330050050010033015003375c60260046eb0cc01cc024cc01cc024011200048040dd71980398048012400066e3cdd7198031804001240009110d48656c6c6f2c20576f726c642100149858c8014c94ccc028cdc3a400000226464a66602060240042930a99806a49334c6973742f5475706c652f436f6e73747220636f6e7461696e73206d6f7265206974656d73207468616e2065787065637465640016375c6020002601000a2a660169212b436f6e73747220696e64657820646964206e6f74206d6174636820616e7920747970652076617269616e7400163008004320033253330093370e900000089919299980798088010a4c2a66018921334c6973742f5475706c652f436f6e73747220636f6e7461696e73206d6f7265206974656d73207468616e2065787065637465640016375c601e002600e0062a660149212b436f6e73747220696e64657820646964206e6f74206d6174636820616e7920747970652076617269616e740016300700233001001480008888cccc01ccdc38008018061199980280299b8000448008c0380040080088c018dd5000918021baa0015734ae7155ceaab9e5573eae855d11",
+      "hash": "f3f821d122b041244de074b9554c7dbcc62f34f62426344c0d0b4c86"
+    },
+    {
+      "title": "vesting.vesting",
+      "datum": {
+        "title": "datum",
+        "schema": {
+          "$ref": "#/definitions/vesting~1Datum"
+        }
+      },
+      "redeemer": {
+        "title": "_redeemer",
+        "schema": {
+          "$ref": "#/definitions/Void"
+        }
+      },
+      "compiledCode": "59027b0100003232323232323232323232322223253330093232533300b3370e900100089919918008009129998090008a5013232533301000214a2266008008002602c00466e1d20023010375460280026464646602866601e6600266016601a01090001bae3300b300d0074800930103d87a80004c0103d87980003301433300f332300100122533301500114a226464a6660260042660080080022940c064008cdc3a400460266ea8c05c004cc050ccc03ccc004cc02cc0340212000375c66016601a00e900226103d87a80004c0103d87980003301433300f3322323253330133370e90010008991919b89005001375a603400260220042940c044004cc034c03ccc034c03c009200048000cc02cc034cc02cc034021200048038dd6998059806803a400098103d87a80004c0103d87980004bd7026103d87a80004c0103d87980004bd7011198019bac3300c300e00248040004c0040048894ccc04c00852809919299980899b8f00200314a2266600a00a002006602e0066eb8c054008c0240085281804800998029803801240042930b1900219299980499b87480000044c8c8c8c8c8c94ccc04cc0580085261533010491334c6973742f5475706c652f436f6e73747220636f6e7461696e73206d6f7265206974656d73207468616e2065787065637465640016375c602800260280046eb8c048004c048008dd6980800098038020a9980524812b436f6e73747220696e64657820646964206e6f74206d6174636820616e7920747970652076617269616e740016300700333001001480008888cccc01ccdc38008018069199980280299b8000448008c03c0040080088c018dd5000918021baa0015734ae7155ceaab9e5573eae815d0aba21",
+      "hash": "05c10f1db29dfab924876e343b048ba2b8e98d5146e6b3882b6f2857"
+    }
+  ],
+  "definitions": {
+    "ByteArray": {
+      "dataType": "bytes"
+    },
+    "Int": {
+      "dataType": "integer"
+    },
+    "Void": {
+      "title": "Unit",
+      "description": "The nullary constructor.",
+      "anyOf": [
+        {
+          "dataType": "constructor",
+          "index": 0,
+          "fields": []
+        }
+      ]
+    },
+    "test_contract/Datum": {
+      "title": "Datum",
+      "anyOf": [
+        {
+          "title": "Datum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "owner",
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    },
+    "test_contract/Redeemer": {
+      "title": "Redeemer",
+      "anyOf": [
+        {
+          "title": "Redeemer",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "msg",
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    },
+    "vesting/Datum": {
+      "title": "Datum",
+      "anyOf": [
+        {
+          "title": "Datum",
+          "dataType": "constructor",
+          "index": 0,
+          "fields": [
+            {
+              "title": "lock_until",
+              "description": "POSIX time in second, e.g. 1672843961000",
+              "$ref": "#/definitions/Int"
+            },
+            {
+              "title": "owner",
+              "description": "Owner's credentials",
+              "$ref": "#/definitions/ByteArray"
+            },
+            {
+              "title": "beneficiary",
+              "description": "Beneficiary's credentials",
+              "$ref": "#/definitions/ByteArray"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
